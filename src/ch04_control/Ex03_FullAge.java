@@ -21,16 +21,9 @@ public class Ex03_FullAge {
 		System.out.printf("생일> ");
 		int bDay = Integer.parseInt(scan.nextLine());
 		scan.close();
-		
-		System.out.printf("%d, %d, %d%n", year , month , day);
-		System.out.printf("%d, %d, %d%n", bYear, bMonth , bDay);
-		
-		System.out.println(month > bMonth);
-		System.out.println(bMonth == month);
-		System.out.println(bDay > day);
-		
-		if(month > bMonth ||(bMonth == month && bDay > day)) {
-			System.out.println("나이는 " + (year - bYear) + "세 입니다.");
+
+		if(month > bMonth || (bMonth == month && bDay <= day)) {
+			System.out.println("나이는 만" + (year - bYear) + "세 입니다.");
 		}
 		else {
 			System.out.println("나이는 만 " + (year - bYear - 1) + "세 입니다.");
