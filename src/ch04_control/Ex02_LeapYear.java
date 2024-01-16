@@ -11,8 +11,25 @@ public class Ex02_LeapYear {
 		int year = Integer.parseInt(inputStr);
 		scan.close();
 		
+		if(year % 4 == 0){
+		    if(year % 100 == 0){
+		        if(year % 400 == 0){
+		        	System.out.printf("%d년은 윤년%n", year);     
+		        }
+		        else{
+		        	System.out.printf("%d년은 평년%n", year);
+		        }
+		    }
+		    else{
+		    	System.out.printf("%d년은 윤년%n", year);
+		    }
+		}
+		else{
+			System.out.printf("%d년은 평년%n", year);
+		}
 		
-		if (year % 4 == 0 && year % 400 == 0 || year % 100 != 0)
+		
+		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
 		{
 		    System.out.printf("%d년은 윤년%n", year);
 		}
