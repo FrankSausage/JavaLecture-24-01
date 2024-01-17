@@ -25,7 +25,11 @@ public class Ex99_JavaStringTest {
 		for (int i = 1; i <= num; i++) {
 			numStr += i;
 		}
-		System.out.println(numStr.replace("[^1]/g", "").length());
+		for (int i = 0; i <= 9; i++){
+			String regEX = "[^" + i +"]";
+			System.out.printf("%d: %d", i, numStr.replaceAll(regEX, "").length());
+			System.out.println();
+		}
 	}
 
 	static void digitalClock() {
