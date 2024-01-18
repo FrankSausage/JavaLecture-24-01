@@ -23,23 +23,47 @@ public class Ex03_MultDimArray {
 //		int[][] a = { { 1, 2, 3 }, { 4, 5, 6 } };		// 2 x 3
 //		int[][] b = { { 1, 2 }, { 3, 4 }, { 5, 6 } };	// 3 x 2
 //		int[][] c = new int[2][2];
-		
+
 		// 지뢰찾기
-		char[][] mines = new char[8][8];
-		for (int i = 0; i < mines.length; i++) {
-			for (int k = 0; k < mines[i].length; k++) {
-				mines[i][k] = (Math.random() > 0.7) ? '*' : '.';
+//		char[][] mines = new char[8][8];
+//		for (int i = 0; i < mines.length; i++) {
+//			for (int k = 0; k < mines[i].length; k++) {
+//				mines[i][k] = (Math.random() > 0.7) ? '*' : '.';
+//			}
+//		}
+//		printMines(mines);
+
+		char[][] padMines = new char[10][10];
+		char[][] finalMines = new char[8][8];
+		for (int i = 0; i < finalMines.length; i++) {
+			for (int y = 0; y < finalMines[i].length; y++) {
+				finalMines[i][y] = (Math.random() > 0.7) ? '*' : '.';
+				if(finalMines[i][y] == '*') {
+					
+				}
 			}
 		}
-		printMines(mines);
+
+		int count = 0;
+		for (int i = 0; i < padMines.length; i++) {
+			for (int y = 0; y < padMines[i].length; y++) {
+				if (finalMines[i][y] < 0 ) {
+					break;
+				}
+			}
+//			
+		}
+		printMines(finalMines);
+
 	}
-	
+
 	static void printMines(char[][] arr) {
-		for (int i = 0 ; i < arr.length; i++) {
-			for(int k = 0; k <arr[i].length; k++) {
+		for (int i = 0; i < arr.length; i++) {
+			for (int k = 0; k < arr[i].length; k++) {
 				System.out.print(arr[i][k] + " ");
 			}
 			System.out.println();
 		}
 	}
+
 }
