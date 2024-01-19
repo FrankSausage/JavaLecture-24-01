@@ -8,6 +8,7 @@ public class BankApplication {
 
 	public static void main(String[] args) {
 		boolean run = true;
+		
 		while (run) {
 			System.out.println();
 			System.out.println("---------------------------------------------------");
