@@ -1,4 +1,4 @@
-package ch06_class;
+package ch06_class.sec11_melon;
 
 public class InterparkBS {
 	int rank;
@@ -29,7 +29,7 @@ public class InterparkBS {
 	
 	@Override
 	public String toString() {
-		return "InterparkBS [rank=" + rank + ", title=" + title + ", author=" + author + ", translator=" + translator
-				+ ", company=" + company + ", price=" + price + "]";
+		return "InterparkBS [rank=" + rank + ", title=" + title + ", author=" + author + ((translator == null) ? "" : (", translator=" + translator)) 
+				+ ", company=" + company + ", price=" + String.format("%,d", price) + "]";
 	}
 }

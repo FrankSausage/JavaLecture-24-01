@@ -35,25 +35,31 @@ public class Ex03_MultDimArray {
 
 		char[][] padMines = new char[10][10];
 		char[][] finalMines = new char[8][8];
-		for (int i = 0; i < finalMines.length; i++) {
-			for (int y = 0; y < finalMines[i].length; y++) {
-				finalMines[i][y] = (Math.random() > 0.7) ? '*' : '.';
-				if(finalMines[i][y] == '*') {
-					
-				}
-			}
-		}
-
-		int count = 0;
 		for (int i = 0; i < padMines.length; i++) {
-			for (int y = 0; y < padMines[i].length; y++) {
-				if (finalMines[i][y] < 0 ) {
-					break;
+			for (int k = 0; k < padMines[i].length; k++) {
+				padMines[i][k] = (Math.random() > 0.7) ? '*' : '.';
+			}
+		}
+		int count = 0;
+		for (int i = 0; i < finalMines.length; i++) {
+			for (int k = 0; k < finalMines[i].length; k++) {
+				if (padMines[i][k] == '.') {
+					count = 0;
+					for (int x = -1; x < x + 2; x++) {
+						for (int y = -1; y < y + 2; y++) {
+							if (padMines[i-x][y] == '*') {
+								count++;
+							}
+							continue;
+						}
+					}
 				}
 			}
-//			
+			System.out.println(count);
 		}
-		printMines(finalMines);
+		printMines(padMines);
+		System.out.println();
+//		printMines(finalMines);
 
 	}
 

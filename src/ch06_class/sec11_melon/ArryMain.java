@@ -1,4 +1,4 @@
-package ch06_class;
+package ch06_class.sec11_melon;
 
 public class ArryMain {
 
