@@ -1,47 +1,13 @@
-package ch10_oop.sec12_BankApp;
+package ch12_interface.sec11_bank;
 
-import java.util.*;
+import java.util.Scanner;
 
-public class BankApplication {
-	private static Account[] accountarray = new Account[100];
+public class AccountServiceImpl implements AccountService {
 	private static Scanner sc = new Scanner(System.in);
-
-	public static void main(String[] args) {
-		boolean run = true;
 		
-		while (run) {
-			System.out.println();
-			System.out.println("---------------------------------------------------");
-			System.out.println("1. 계좌생성 | 2.계좌목록 | 3.예금 | 4.출금 | 5.종료");
-			System.out.println("---------------------------------------------------");
-			System.out.print("선택> ");
 
-			int selectNo = Integer.parseInt(sc.nextLine());
-
-			switch (selectNo) {
-			case 1:
-				createAccount();
-				continue;
-			case 2:
-				accountList();
-				continue;
-			case 3:
-				deposit();
-				continue;
-			case 4:
-				withdraw();
-				continue;
-			case 5:
-				run = false;
-				break;
-			default:
-				run = true;
-			}
-		}
-		System.out.println("프로그램 종료");
-	}
-
-	private static void createAccount() {
+	@Override
+	public void createAccount(Account[] accountArray) {
 		System.out.println("-----------");
 		System.out.println("계좌생성");
 		System.out.println("-----------");
@@ -52,10 +18,11 @@ public class BankApplication {
 		String creatOwner = sc.nextLine();
 		System.out.print("초기입금액: ");
 		int firstBalance = Integer.parseInt(sc.nextLine());
-
-		for (int i = 0; i < accountarray.length; i++) {
-			if (accountarray[i] == null) {
-				accountarray[i] = new Account(creatAno, creatOwner, firstBalance);
+		
+		Account newAC = new Account(creatAno, creatOwner, firstBalance);
+		for (int i = 0; i < accountArray.length; i++) {
+			if (accountArray[i] == null) {
+				accountArray[i] = newAC;
 				break;
 			}
 		}
@@ -63,22 +30,24 @@ public class BankApplication {
 		System.out.println("결과: 계좌가 생성되었습니다.");
 	}
 
-	private static void accountList() {
+	@Override
+	public void accountList(Account[] accountArray) {
 		System.out.println("-----------");
 		System.out.println("계좌목록");
 		System.out.println("-----------");
 
-		for (int i = 0; i < accountarray.length; i++) {
-			if (accountarray[i] != null) {
-				System.out.println(accountarray[i].getAno() + "   " + accountarray[i].getOwner() + "   "
-						+ accountarray[i].getBalance());
+		for (int i = 0; i < accountArray.length; i++) {
+			if (accountArray[i] != null) {
+				System.out.println(accountArray[i].getAno() + "   " + accountArray[i].getOwner() + "   "
+						+ accountArray[i].getBalance());
 				continue;
 			}
 			break;
 		}
 	}
 
-	private static void deposit() {
+	@Override
+	public void deposit(Account[] accountArray) {
 		System.out.println("-----------");
 		System.out.println("예금");
 		System.out.println("-----------");
@@ -88,7 +57,7 @@ public class BankApplication {
 		System.out.print("예금액: ");
 		int depoBalance = Integer.parseInt(sc.nextLine());
 
-		Account depoArr = findAccount(findAno);
+		Account depoArr = findAccount(findAno, accountArray);
 
 		if (depoArr != null) {
 			depoArr.setBalance(depoArr.getBalance() + depoBalance);
@@ -98,7 +67,8 @@ public class BankApplication {
 		}
 	}
 
-	private static void withdraw() {
+	@Override
+	public void withdraw(Account[] accountArray) {
 		System.out.println("-----------");
 		System.out.println("출금");
 		System.out.println("-----------");
@@ -108,7 +78,7 @@ public class BankApplication {
 		System.out.print("예금액: ");
 		int wdBalance = Integer.parseInt(sc.nextLine());
 
-		Account depoArr = findAccount(findAno);
+		Account depoArr = findAccount(findAno, accountArray);
 
 		if (depoArr != null) {
 			if (!(depoArr.getBalance() < wdBalance)) { 
@@ -122,19 +92,20 @@ public class BankApplication {
 		}
 	}
 
-	private static Account findAccount(String ano) {
+	@Override
+	public Account findAccount(String ano, Account[] accountArray) {
 		Account account = null;
 
-		for (int i = 0; i < accountarray.length; i++) {
-			if (accountarray[i] != null) {
-				String accountStr = accountarray[i].getAno();
+		for (int i = 0; i < accountArray.length; i++) {
+			if (accountArray[i] != null) {
+				String accountStr = accountArray[i].getAno();
 				if (accountStr.equals(ano)) {
-					account = accountarray[i];
+					account = accountArray[i];
 					break;
 				}
 			}
 		}
-
 		return account;
 	}
+
 }
