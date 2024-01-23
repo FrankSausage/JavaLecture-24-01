@@ -1,15 +1,22 @@
 package EX99_Message;
 
+import java.time.LocalDate;
+
 public class Message {
-	private String mid;
+	private int mid;
 	private String content;
 	private String writer;
-	private int genTime;
+	private LocalDate genTime;
 	private int isDeleted;
 	
-	
-	public Message(String mid, String content, String writer, int genTime, int isDeleted) {
-		super();
+	public Message() { }
+	public Message(int mid, String content, String writer, LocalDate genTime) {
+		this.mid = mid;
+		this.content = content;
+		this.writer = writer;
+		this.genTime = genTime;
+	}
+	public Message(int mid, String content, String writer, LocalDate genTime, int isDeleted) {
 		this.mid = mid;
 		this.content = content;
 		this.writer = writer;
@@ -18,12 +25,12 @@ public class Message {
 	}
 
 
-	public String getMid() {
+	public int getMid() {
 		return mid;
 	}
 
 
-	public void setMid(String mid) {
+	public void setMid(int mid) {
 		this.mid = mid;
 	}
 
@@ -48,12 +55,12 @@ public class Message {
 	}
 
 
-	public int getGenTime() {
+	public LocalDate getGenTime() {
 		return genTime;
 	}
 
 
-	public void setGenTime(int genTime) {
+	public void setGenTime(LocalDate genTime) {
 		this.genTime = genTime;
 	}
 
