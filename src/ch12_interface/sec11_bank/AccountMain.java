@@ -22,22 +22,21 @@ public class AccountMain {
 			switch (selectNo) {
 			case 1:
 				ac.createAccount(account);
-				continue;
+				break;
 			case 2:
 				ac.accountList(account);
-				continue;
+				break;
 			case 3:
 				ac.deposit(account);
-				continue;
+				break;
 			case 4:
 				ac.withdraw(account);
-				continue;
+				break;
 			case 5:
 				run = false;
 				break;
 			default:
 				System.out.println("올바른 번호를 입력 해 주세요.");
-				run = true;
 			}
 		}
 		

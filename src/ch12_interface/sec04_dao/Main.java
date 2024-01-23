@@ -8,7 +8,7 @@ public class Main {
 		// MySQL DB를 사용하려면
 		CustomerDao customerDao = new CustomerDaoMySQLImpl();
 		Customer customer = customerDao.getCustomer(34);
-		List<Customer> list =customerDao.getCustomerList();
+		List<Customer> list = customerDao.getCustomerList();
 		customerDao.insertCustomer(customer);
 		customerDao.updateCustomer(customer);
 		customerDao.deleteCustomer(34);
