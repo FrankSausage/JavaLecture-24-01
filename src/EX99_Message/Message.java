@@ -10,6 +10,12 @@ public class Message {
 	private int isDeleted;
 	
 	public Message() { }
+	
+	public Message(String content, String writer) {
+		this.content = content;
+		this.writer = writer;
+	}
+	
 	public Message(int mid, String content, String writer, LocalDate genTime) {
 		this.mid = mid;
 		this.content = content;
