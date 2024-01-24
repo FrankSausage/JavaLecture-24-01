@@ -11,11 +11,9 @@ public class MessageMain {
 		while (run) {
 			int index = 0;
 			String writer = "";
-			System.out.println(
-					"+============++============++============++============++=================++============+");
+			System.out.println("+============++============++============++============++=================++============+");
 			System.out.println("| 1.게시물 목록 | 2.작가 검색 | 3.게시글 작성 | 4. 게시글 수정 | 5.게시글 삭제 | 6.종료 |");
-			System.out.println(
-					"+============++============++============++============++=================++============+");
+			System.out.println("+============++============++============++============++=================++============+");
 			System.out.print("선택> ");
 			int selectNum = Integer.parseInt(sc.nextLine());
 
@@ -54,6 +52,7 @@ public class MessageMain {
 				System.out.println("올바른 값을 입력해주세요.");
 			}
 		}
+		sc.close();
 		System.out.println("프로그램을 종료합니다.");
 	}
 
