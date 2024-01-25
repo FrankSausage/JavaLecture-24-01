@@ -1,4 +1,4 @@
-package ch17_collection.sec03_message;
+package ch17_collection.part1_list.sec03_message;
 
 import java.util.*;
 
@@ -10,10 +10,8 @@ public class MessageMain {
         boolean run = true;
 
         while (run) {
-            int index = 0;
-            String writer = "";
-            String newName = "";
-            String newContent = "";
+            int index = 0; String writer = ""; String newName = ""; String newContent = "";
+
             System.out.println("+============++============++============++============++=================++============+");
             System.out.println("| 1.게시물 목록 | 2.작가 검색 | 3.게시글 작성 | 4. 게시글 수정 | 5.게시글 삭제 | 6.종료 |");
             System.out.println("+============++============++============++============++=================++============+");
@@ -27,9 +25,7 @@ public class MessageMain {
                         System.out.println("게시물이 존재하지 않습니다.");
                         break;
                     }
-                    for(Message m: allList){
-                        System.out.println(m);
-                    }
+                    allList.forEach(System.out::println);
                     break;
                 case 2:
                     System.out.println("찾고자 하는 작가 검색> ");

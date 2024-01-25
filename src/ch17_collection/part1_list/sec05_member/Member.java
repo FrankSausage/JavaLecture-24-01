@@ -1,4 +1,4 @@
-package ch17_collection.sec05_member;
+package ch17_collection.part1_list.sec05_member;
 
 public class Member {
 	private int age;
