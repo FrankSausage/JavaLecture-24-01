@@ -17,15 +17,13 @@ public class MapExample {
 
         Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
         for(Map.Entry<String, Integer> entry: entrySet){
-            int newMaxScore = entry.getValue();
-
-            if(newMaxScore >= maxScore){
-                maxScore = newMaxScore;
+            if(entry.getValue() >= maxScore){
+                maxScore = entry.getValue();
                 name = entry.getKey();
-                totalScore += newMaxScore;
+                totalScore += entry.getValue();
             }
         }
-        System.out.printf("평균점수: %d%n최고점수: %d%n최고점수를 받은 아이디: %s%n", totalScore/2, maxScore, name);
+        System.out.printf("평균점수: %d%n최고점수: %d%n최고점수를 받은 아이디: %s%n", totalScore/map.size(), maxScore, name);
 
     }
 }
