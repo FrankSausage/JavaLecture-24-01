@@ -17,7 +17,7 @@ public class MelonChart {
 
     @Override
     public String toString() {
-        return String.format("%2d %s  %s  %s %s", rank, title, artist ,album, imgSrc);
+        return String.format("%2d. %s - %s / %s %s", rank, title, artist ,album, imgSrc);
 //        return "MelonChart{" +
 //                "rank=" + rank +
 //                ", title='" + title + '\'' +
