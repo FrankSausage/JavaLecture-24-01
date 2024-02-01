@@ -1,4 +1,4 @@
-package test;
+package test.exam240201;
 
 public class testQ1 {
 
