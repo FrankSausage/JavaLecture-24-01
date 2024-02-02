@@ -58,7 +58,7 @@ SELECT * FROM city
 SELECT * FROM city WHERE district LIKE 'Chungchong%';        # % - 임의의 문자, 이때는 LIKE 사용
 
 /*
-    1.2 순서 (Order) - ASC(Ascending: 오름차순, defalult), DESC(Descending: 내림차순)
+    1.2 순서 (Order) - ASC(Ascending: 오름차순, default), DESC(Descending: 내림차순)
 */
 # 인구수가 900만 이상인 도시를 인구수의 내림차순으로 조회조건
 SELECT * FROM city WHERE population >= 9000000 
@@ -183,3 +183,11 @@ SELECT r.Name countryName, l.Name cityName, l.Population, o.`Language`  FROM cit
 	WHERE r.Continent='Asia' AND o.IsOfficial='T'
 	ORDER BY l.Population DESC
 	LIMIT 10;
+
+/*
+    1.8 Sub Query
+*/
+# 국내 도시만으로 새로운 테이블을 만드는 경우
+CREATE TABLE if NOT EXISTS kcity LIKE city;
+INSERT INTO kcity
+    SELECT * FROM city WHERE countrycode='KOR';
