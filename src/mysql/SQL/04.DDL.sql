@@ -58,7 +58,11 @@ RENAME TABLE kcity TO korCity;
 /*
     5. 테이블 구조 변경
 */
+# users 테이블에서 email 뒤에 tel 추가
+ALTER TABLE users ADD tel VARCHAR(16) NOT NULL AFTER email; 
 
+# users 테이블에서 tel 필드의 not null 제거
+ALTER TABLE users CHANGE tel tel VARCHAR(16);
 
 
 
