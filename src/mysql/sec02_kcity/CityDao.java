@@ -2,10 +2,9 @@ package mysql.sec02_kcity;
 
 import java.io.FileInputStream;
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /*
@@ -89,5 +88,105 @@ public class CityDao {
             e.printStackTrace();
         }
         return city;
+    }
+
+    public List<City> getCityListAll() {
+        Connection conn = myConnection();
+        String sql = "select * from kcity";
+        List<City> list = new ArrayList<City>();
+        try {
+            Statement stmt = conn.createStatement();
+            // Select 실행하고 결과를 ResultSet으로 받기
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                City city = new City(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getInt(5));
+                list.add(city);
+            }
+            rs.close(); stmt.close(); conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<City> getCityListByDistrict(String district) {
+        Connection conn = myConnection();
+        String sql = "select * from kcity where district=?";
+        List<City> list = new ArrayList<City>();
+        try {
+            // 파라메터 세팅
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, district);
+            // Select 실행하고 결과를 ResultSet에 담기
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                City city = new City(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getInt(5));
+                list.add(city);
+            }
+            rs.close(); pstmt.close(); conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public void insertCity(City city) {
+        Connection conn = myConnection();
+        String sql = "insert into kcity values(default, ?, ?, ?, ?)";
+        try {
+            // 파라메터 세팅
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, city.getName());
+            pstmt.setString(2, city.getCountryCode());
+            pstmt.setString(3, city.getDistrict());
+            pstmt.setInt(4, city.getPopulation());
+
+            // SQL 실행
+            pstmt.executeUpdate();
+
+            pstmt.close(); conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateCity(City city) {
+        Connection conn = myConnection();
+        String sql = "update kcity set name=?, countrycode=?, district=?, population=? where id=?";
+        try {
+            // 파라메터 세팅
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, city.getName());
+            pstmt.setString(2, city.getCountryCode());
+            pstmt.setString(3, city.getDistrict());
+            pstmt.setInt(4, city.getPopulation());
+            pstmt.setInt(5, city.getId());
+
+            // SQL 실행
+            pstmt.executeUpdate();
+
+            pstmt.close(); conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCity(int id) {
+        Connection conn = myConnection();
+        String sql = "delete from kcity where id=?";
+        try {
+            // 파라메터 세팅
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+
+            // SQL 실행
+            pstmt.executeUpdate();
+
+            pstmt.close(); conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
