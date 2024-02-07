@@ -58,7 +58,7 @@ public class MessageDao{
 
     public Message getMessageByMid(int mid){
         String sql = "select * from message where mid=?";
-        Message ms = null;
+        Message ms = new Message();
         try{
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, mid);
