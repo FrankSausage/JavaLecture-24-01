@@ -22,7 +22,7 @@ public class UserServiceMySQLImpl implements UserService{
     }
 
     @Override
-    public void registerUser(User user) {   // user는 아직 암호화된 패스워드가 없다고 가정
+    public void registerUser(User user) {   // user 는 아직 암호화된 패스워드가 없다고 가정
         User u = userDao.getUserByUid(user.getUid());
         if(u != null){      // 중복 체크
             return;

@@ -41,11 +41,11 @@
 		<suspend_validator>false</suspend_validator>
 		<export_setting>
 			<export_ddl_setting>
-				<output_path>src\mysql\ERD\Sample.sql</output_path>
-				<encoding>UTF-8</encoding>
-				<line_feed>CR+LF</line_feed>
+				<output_path></output_path>
+				<encoding></encoding>
+				<line_feed></line_feed>
 				<is_open_after_saved>true</is_open_after_saved>
-				<environment_id>0</environment_id>
+				<environment_id>null</environment_id>
 				<category_id>null</category_id>
 				<ddl_target>
 					<create_comment>true</create_comment>
@@ -134,8 +134,8 @@
 			<connections>
 			</connections>
 			<display>false</display>
-			<creation_date>2024-02-01 15:51:32</creation_date>
-			<updated_date>2024-02-07 14:58:41</updated_date>
+			<creation_date>2024-02-07 14:53:07</creation_date>
+			<updated_date>2024-02-07 14:58:43</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -250,7 +250,7 @@
 			<description></description>
 			<logical_name>uid</logical_name>
 			<physical_name>uid</physical_name>
-			<type>varbinary(n)</type>
+			<type>varchar(n)</type>
 		</word>
 		<word>
 			<id>5</id>
@@ -274,12 +274,12 @@
 	<contents>
 		<table>
 			<id>0</id>
-			<height>170</height>
-			<width>193</width>
+			<height>193</height>
+			<width>222</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>12</x>
-			<y>24</y>
+			<y>12</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -301,7 +301,7 @@
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>varbinary(n)</type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
