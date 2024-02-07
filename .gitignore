@@ -1,5 +1,6 @@
 # added
 mysql.properties
+bin/
 
 # Compiled class file
 *.class
