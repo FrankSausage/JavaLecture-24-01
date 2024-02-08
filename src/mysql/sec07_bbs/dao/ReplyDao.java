@@ -12,14 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class ReplayDao {
+public class ReplyDao {
     private String connStr;
     private String user;
     private String password;
     private Connection conn;
 
-    public ReplayDao() {
-        String path = "C:/Users/human-18/Desktop/Java/lesson/src/mysql/mysql.properties";
+    public ReplyDao() {
+        String path = "C:/Users/human-18/Desktop/Java/lesson/src/mysql/sec07_bbs/mysql.properties";
         try {
             Properties prop = new Properties();
             prop.load(new FileInputStream(path));
@@ -44,44 +44,26 @@ public class ReplayDao {
         }
     }
 
-    public Reply getReply(int rid) {
-        String sql = "select * from reply where rid=?";
-        Reply reply = new Reply();
-        try {
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, rid);
-
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                reply.setRid(rs.getInt(1));
-                reply.setComment(rs.getString(2));
-                reply.setRegTime(LocalDateTime.parse(rs.getString(3).replace(" ", "T")));
-                reply.setUid(rs.getString(4));
-                reply.setBid(rs.getInt(5));
-            }
-            pstmt.close();
-            rs.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return reply;
-    }
-
     public List<Reply> getReplyList(int bid) {
-        String sql = "select * from reply where bid=?";
+        String sql = "SELECT r.*, u.uname FROM reply r" +
+                " JOIN users u ON r.uid=u.uid" +
+                " WHERE r.bid=?" +
+                " ORDER BY rid";
         List<Reply> rList = new ArrayList<>();
-        Reply reply = new Reply();
+        Reply reply = null;
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, bid);
 
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()){
+                reply = new Reply();
                 reply.setRid(rs.getInt(1));
                 reply.setComment(rs.getString(2));
                 reply.setRegTime(LocalDateTime.parse(rs.getString(3).replace(" ", "T")));
                 reply.setUid(rs.getString(4));
                 reply.setBid(rs.getInt(5));
+                reply.setUname(rs.getString(6));
                 rList.add(reply);
             }
             pstmt.close();

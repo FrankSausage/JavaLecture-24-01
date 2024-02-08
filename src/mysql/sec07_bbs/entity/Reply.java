@@ -8,14 +8,26 @@ public class Reply {
     private LocalDateTime regTime;
     private String uid;
     private int bid;
+    private String uname;
 
-    public Reply() { }
+    public Reply() {
+    }
+
     public Reply(int rid, String comment, LocalDateTime regTime, String uid, int bid) {
         this.rid = rid;
         this.comment = comment;
         this.regTime = regTime;
         this.uid = uid;
         this.bid = bid;
+    }
+
+    public Reply(int rid, String comment, LocalDateTime regTime, String uid, int bid, String uname) {
+        this.rid = rid;
+        this.comment = comment;
+        this.regTime = regTime;
+        this.uid = uid;
+        this.bid = bid;
+        this.uname = uname;
     }
 
     @Override
@@ -26,6 +38,7 @@ public class Reply {
                 ", regTime=" + regTime +
                 ", uid='" + uid + '\'' +
                 ", bid=" + bid +
+                ", uname='" + uname + '\'' +
                 '}';
     }
 
@@ -67,5 +80,13 @@ public class Reply {
 
     public void setBid(int bid) {
         this.bid = bid;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
     }
 }
