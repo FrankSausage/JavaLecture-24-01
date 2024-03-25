@@ -13,15 +13,14 @@ public class Reply {
     public Reply() {
     }
 
-    public Reply(int rid, String comment, LocalDateTime regTime, String uid, int bid) {
-        this.rid = rid;
-        this.comment = comment;
-        this.regTime = regTime;
-        this.uid = uid;
-        this.bid = bid;
-    }
+    public Reply(String comment, String uid, int bid) {
+		super();
+		this.comment = comment;
+		this.uid = uid;
+		this.bid = bid;
+	}
 
-    public Reply(int rid, String comment, LocalDateTime regTime, String uid, int bid, String uname) {
+	public Reply(int rid, String comment, LocalDateTime regTime, String uid, int bid, String uname) {
         this.rid = rid;
         this.comment = comment;
         this.regTime = regTime;

@@ -22,7 +22,7 @@ CREATE TABLE board
 	uid varchar(12) NOT NULL,
 	modTime datetime DEFAULT (CURRENT_TIMESTAMP),
 	isDeleted int DEFAULT 0,
-	viewCount int,
+	viewCount int DEFAULT 0,
 	replyCount int DEFAULT 0,
 	PRIMARY KEY (bid)
 );
